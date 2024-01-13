@@ -26,9 +26,9 @@ ${RELOADED STATE}               return document.readyState == "complete"
 ${SALE ITEM1}                   //*[@id="boxes"]/div[
 ${SALE ITEM2}                   ]/div[2]/div[1]/span/div/div/a
 ${CART ICON}                    //*[@id="page"]/div[1]/div/div/div[1]/div/header/div[4]/a/span
+${BACK BUTTON}                  id=varBBackButton
 
 *** Keywords ***
-
 # Given
 Browser is opened
     Open browser            ${HOME URL}    ${BROWSER}
@@ -45,6 +45,8 @@ User navigates to Work computers
     Mouse over                      ${COMPUTERS MENU}
     Page Should Contain Element     ${WORKSTATIONS SUBMENU}    5s
     Click element                   ${WORKSTATIONS SUBMENU}
+    Wait For Condition	            ${RELOADED STATE}
+    Sleep   5s
     Title should be                 ${WORKSTATIONS TITLE}
 
 User filters from most expensive
@@ -53,11 +55,13 @@ User filters from most expensive
     Wait For Condition	        ${RELOADED STATE}
 
 User adds "${ITEM NUMBER}" most expensive item
+    ${present}=  Run Keyword And Return Status    Element Should Be Visible   ${BACK BUTTON}
+    Run Keyword If    ${present}    click element    ${BACK BUTTON}
     Scroll element into view        ${SALE ITEM1}${ITEM NUMBER}${SALE ITEM2}
     Click element                   ${SALE ITEM1}${ITEM NUMBER}${SALE ITEM2}
     Wait For Condition	            ${RELOADED STATE}
 
 # Then
 Cart should contain "${COUNT}" item(s)
-    Wait until element is visible   ${CART ICON}    7s
+    Wait until element is visible   ${CART ICON}    5s
     Element text should be          ${CART ICON}    ${COUNT}

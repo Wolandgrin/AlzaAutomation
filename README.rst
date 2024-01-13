@@ -50,7 +50,9 @@ the ``tests`` directory.
 Generated results
 =================
 
-After `running tests`_ you will get report and log in HTML format in the appropriate ``reports`` directory:
+After `running tests`_ you will get report and log in HTML format in the appropriate ``reports``
+directory. For every new release build tasks should be executed to have release build information
+gathered in ``docs`` folder:
 
 - `report.html`_
 - `log.html`_
@@ -96,4 +98,6 @@ Examples of different parameters that might me executed for testing purposes::
 .. _source code: https://github.com/wolandgrin/AlzaAutomation.git
 .. _100cart_operations.robot: https://github.com/wolandgrin/AlzaAutomation/blob/master/tests/100cart_operations.robot
 .. _resource.robot: https://github.com/wolandgrin/AlzaAutomation/blob/master/tests/resource.robot
+.. _log.html: https://github.com/wolandgrin/AlzaAutomation/blob/master/docs/log.html
+.. _report.html: https://github.com/wolandgrin/AlzaAutomation/blob/master/docs/report.html
 .. _Robot Framework User Guide: http://robotframework.org/robotframework/#user-guide

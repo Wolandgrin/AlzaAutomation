@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="generator" content="Docutils 0.20.1: https://docutils.sourceforge.io/" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Alza web store testing with Robot Framework and SeleniumLibrary</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="extra.css" type="text/css" />
+</head>
+<body class="with-toc">
+<main id="alza-web-store-testing-with-robot-framework-and-seleniumlibrary">
+<h1 class="title">Alza web store testing with Robot Framework and SeleniumLibrary</h1>
+
+<p>For this project <a class="reference external" href="http://robotframework.org">Robot Framework</a> was used along with the
+<a class="reference external" href="https://github.com/robotframework/SeleniumLibrary">SeleniumLibrary</a> verifying use cases Alza web store.</p>
+<nav class="contents local" id="contents" role="doc-toc">
+<p class="topic-title"><strong>Contents:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#environment" id="toc-entry-1">Environment</a></p></li>
+<li><p><a class="reference internal" href="#downloading-repository" id="toc-entry-2">Downloading repository</a></p></li>
+<li><p><a class="reference internal" href="#test-cases" id="toc-entry-3">Test cases</a></p></li>
+<li><p><a class="reference internal" href="#generated-results" id="toc-entry-4">Generated results</a></p></li>
+<li><p><a class="reference internal" href="#running-automation-tests" id="toc-entry-5">Running automation tests</a></p></li>
+</ul>
+</nav>
+<section id="environment">
+<h2><a class="toc-backref" href="#toc-entry-1" role="doc-backlink">Environment</a></h2>
+<p>OS: MacOS 13</p>
+<p>IDE: PyCharm 2023.3.2</p>
+<p>Python: 3.11.2</p>
+<p>Terminal: zsh (iTerm2)</p>
+<p>Verified: Mac/Win</p>
+<p>Browser: Chrome</p>
+</section>
+<section id="downloading-repository">
+<h2><a class="toc-backref" href="#toc-entry-2" role="doc-backlink">Downloading repository</a></h2>
+<p>To get the project, you can either <a class="reference external" href="https://github.com/wolandgrin/AlzaAutomation/archive/master.zip">download</a> the repository from GitHub or checkout
+the <a class="reference external" href="https://github.com/wolandgrin/AlzaAutomation.git">source code</a> directly. As a result you get <span class="docutils literal">AlzaAutomation</span> directory with <span class="docutils literal">tests</span>
+sub directory.</p>
+</section>
+<section id="test-cases">
+<h2><a class="toc-backref" href="#toc-entry-3" role="doc-backlink">Test cases</a></h2>
+<p>Test case files as well as a resource file used by them are located in
+the <span class="docutils literal">tests</span> directory.</p>
+<dl>
+<dt><a class="reference external" href="https://github.com/wolandgrin/AlzaAutomation/blob/master/tests/100cart_operations.robot">100cart_operations.robot</a></dt>
+<dd><p>A test suite with a Gherkin style tests.</p>
+</dd>
+<dt><a class="reference external" href="https://github.com/wolandgrin/AlzaAutomation/blob/master/tests/resource.robot">resource.robot</a></dt>
+<dd><p>A resource file with reusable keywords and variables.</p>
+<p>The system specific keywords created here form our own
+domain specific language. They utilize keywords provided
+by the imported <a class="reference external" href="https://github.com/robotframework/SeleniumLibrary">SeleniumLibrary</a>.</p>
+</dd>
+</dl>
+</section>
+<section id="generated-results">
+<h2><a class="toc-backref" href="#toc-entry-4" role="doc-backlink">Generated results</a></h2>
+<p>After <a class="reference internal" href="#running-tests">running tests</a> you will get report and log in HTML format in the appropriate <span class="docutils literal">reports</span>
+directory. For every new release build tasks should be executed to have release build information
+gathered in <span class="docutils literal">docs</span> folder:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/wolandgrin/AlzaAutomation/blob/master/docs/report.html">report.html</a></p></li>
+<li><p><a class="reference external" href="https://github.com/wolandgrin/AlzaAutomation/blob/master/docs/log.html">log.html</a></p></li>
+</ul>
+</section>
+<section id="running-automation-tests">
+<h2><a class="toc-backref" href="#toc-entry-5" role="doc-backlink">Running automation tests</a></h2>
+<section id="preconditions">
+<h3>Preconditions</h3>
+<p>Requirements should be installed in addition to preconditions in the
+section above:</p>
+<pre class="literal-block">pip install -r requirements.txt</pre>
+</section>
+<section id="running-tests">
+<h3>Running tests</h3>
+<p>The <a class="reference internal" href="#test-cases">test cases</a> are located in the <span class="docutils literal">tests</span> directory. They can be
+executed using the <span class="docutils literal">robot</span> command:</p>
+<pre class="literal-block">robot  --log logs/log.html --outputdir reports tests</pre>
+<p>You can also run an individual test case file and use various command line
+options supported by Robot Framework:</p>
+<pre class="literal-block">robot tests/100cart_operations.robot
+robot --loglevel DEBUG -i Smoke tests</pre>
+</section>
+<section id="useful-commands-for-execution">
+<h3>Useful commands for execution</h3>
+<p>Examples of different parameters that might me executed for testing purposes:</p>
+<pre class="literal-block">robot --variable BROWSER:IE tests/100cart_operations.robot
+robot  --log logs/log.html --outputdir reports --loglevel DEBUG -i Smoke --timestamp tests</pre>
+</section>
+</section>
+</main>
+</body>
+</html>
