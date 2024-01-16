@@ -30,6 +30,7 @@ jobs:
         #     echo "Auto Test Pass Rate Not 100%, Please Check Test Result"
         #     exit 1
         - name: Publish test results
+          if: always()
           uses: actions/upload-artifact@v2
           with:
             name: robot-test-results
