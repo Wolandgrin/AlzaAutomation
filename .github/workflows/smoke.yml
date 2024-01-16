@@ -18,12 +18,19 @@ jobs:
             path: ~/.cache/pip
             key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
 
+        - name: Set resolution
+          run: |
+            "/Library/Application Support/VMware Tools/vmware-resolutionSet" 1024 768
+            Sleep 2
+
         - name: Install pip dependencies
+          if: always()
           run: |
             pip install --upgrade pip
             pip install -r requirements.txt
 
         - name: Run Test
+          if: always()
           run: python -m robot --outputdir reports -i Smoke --loglevel DEBUG tests
 #        - name: If Auto Test Pass Rate Not 100%, Job Will Fail
 #          if: env.ROBOT_RC != '0'
@@ -40,4 +47,4 @@ jobs:
 
         - name: Clean up repository
           if: always()
-          run: rm -rf reports
+          run: dir && del reports
