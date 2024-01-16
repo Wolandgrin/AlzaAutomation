@@ -24,25 +24,16 @@ jobs:
             pip install -r requirements.txt
 
         - name: Run Test
-          run: python -m robot -i Smoke tests
+          run: python -m robot --outputdir reports -i Smoke --loglevel DEBUG tests
         # - name: If Auto Test Pass Rate Not 100%, Job Will Fail
         #   if: env.ROBOT_RC != '0'
         #   run: |
         #     echo "Auto Test Pass Rate Not 100%, Please Check Test Result"
         #     exit 1
 
-        - name: Prepare test results
-          if: always()
-          run: |
-            mkdir results
-            cp log.html results/log.html
-            cp output.xml results/output.xml
-            cp report.html results/report.html
-            ls -la results
-
         - name: Publish test results
           if: always()
           uses: actions/upload-artifact@v2
           with:
             name: robot-test-results
-            path: results
+            path: reports
