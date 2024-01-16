@@ -12,7 +12,7 @@ Resource        ../../configs/globalConfigs.robot
 *** Keywords ***
 # Given
 Browser is opened
-    Open browser            ${HOME URL}    ${BROWSER}
+    Open browser            ${HOME URL}    ${BROWSER}      options=add_argument("--disable-dev-shm-usage")
     Maximize browser window
     Set Selenium speed      ${DELAY}
     Click element           ${ACCEPT COOKIES}
