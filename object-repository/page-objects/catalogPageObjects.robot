@@ -2,6 +2,7 @@
 Documentation   File with Catalog page objects
 Library         SeleniumLibrary
 Resource        ../locators/catalogPageLocators.robot
+Resource        ../locators/commonLocators.robot
 Resource        ../../configs/globalConfigs.robot
 
 *** Keywords ***
