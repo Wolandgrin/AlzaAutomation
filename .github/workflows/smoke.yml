@@ -31,13 +31,14 @@ jobs:
         #     echo "Auto Test Pass Rate Not 100%, Please Check Test Result"
         #     exit 1
 
-        - name: Publish test results
+        - name: Prepare test results
           if: always()
           run: |
             mkdir results
             cp log.html results/log.html
-            cp output.html results/output.html
+            cp output.html results/output.xml
             cp report.html results/report.html
+            ls -la results
 
         - name: Publish test results
           if: always()
@@ -45,3 +46,9 @@ jobs:
           with:
             name: robot-test-results
             path: results
+          run: |
+#            mkdir results
+            cp log.html results/log.html
+            cp output.html results/output.xml
+            cp report.html results/report.html
+            ls -la results
