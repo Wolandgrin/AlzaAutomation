@@ -18,11 +18,6 @@ jobs:
             path: ~/.cache/pip
             key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
 
-        - name: Set resolution
-          run: |
-            "/Library/Application Support/VMware Tools/vmware-resolutionSet" 1024x768
-            Sleep 2
-
         - name: Install pip dependencies
           if: always()
           run: |
@@ -47,4 +42,5 @@ jobs:
 
         - name: Clean up repository
           if: always()
+          shell: cmd
           run: rmdir reports
