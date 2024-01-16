@@ -12,7 +12,7 @@ Resource        ../../configs/globalConfigs.robot
 *** Keywords ***
 # Given
 Browser is opened
-    Open browser            ${HOME URL}    ${BROWSER}      options=add_argument("--disable-dev-shm-usage");add_argument('--no-sandbox');add_argument("--headless");add_argument('--remote-debugging-port=9222')
+    Open browser            ${HOME URL}    ${BROWSER}      options=add_argument("--disable-dev-shm-usage");add_argument('--no-sandbox');add_argument('--remote-debugging-port=9222')
     Maximize browser window
     Set Selenium speed      ${DELAY}
     Click element           ${ACCEPT COOKIES}
@@ -27,7 +27,7 @@ User navigates to Work notebooks
     Page Should Contain Element     ${WORKSTATIONS SUBMENU}    5s
     Click element                   ${WORKSTATIONS SUBMENU}
     Wait For Condition	            ${RELOADED STATE}
-    Sleep   5s
+    Wait until element is visible   ${WORKSTATIONS TITLE}    5s
     Title should be                 ${WORKSTATIONS TITLE}
 
 # Then
