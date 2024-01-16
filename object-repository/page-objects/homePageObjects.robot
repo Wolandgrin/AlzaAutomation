@@ -12,7 +12,7 @@ Resource        ../../configs/globalConfigs.robot
 *** Keywords ***
 # Given
 Browser is opened
-    Open browser            ${HOME URL}    ${BROWSER}      options=add_argument("--disable-dev-shm-usage");add_argument('--no-sandbox');add_argument('--disable-gpu');add_argument('--remote-debugging-port=9222')
+    Open browser            ${HOME URL}    ${BROWSER}      options=add_argument("--headless")
     Maximize browser window
     Set Selenium speed      ${DELAY}
     Click element           ${ACCEPT COOKIES}
