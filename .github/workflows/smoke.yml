@@ -21,10 +21,11 @@ jobs:
         - name: Set resolution
           shell: cmd
           run: |
-            dir %ProgramFiles%
-            dir %ProgramFiles%\VMware
-            dir "%ProgramFiles%\VMware\VMware Tools"
-            "%ProgramFiles%\VMware\VMware Tools\VMwareResolutionSet.exe" 0 1 , 0 0 1920 1080
+            dir "c:\"
+            dir "c:\Program Files"
+            dir "c:\Program Files\VMware"
+            dir "c:\Program Files\VMware\VMware Tools"
+            "c:\Program Files\VMware\VMware Tools\VMwareResolutionSet.exe" 0 1 , 0 0 1920 1080
 
         - name: Install pip dependencies
           if: always()
