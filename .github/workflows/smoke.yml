@@ -21,7 +21,10 @@ jobs:
         - name: Set resolution
           shell: cmd
           run: |
-            "%ProgramFiles%\VMware\VMware ToolsVMwareResolutionSet.exe" 0 1 , 0 0 1920 1080
+            dir %ProgramFiles%
+            dir %ProgramFiles%\VMware
+            dir "%ProgramFiles%\VMware\VMware Tools"
+            "%ProgramFiles%\VMware\VMware Tools\VMwareResolutionSet.exe" 0 1 , 0 0 1920 1080
 
         - name: Install pip dependencies
           if: always()
@@ -32,11 +35,6 @@ jobs:
         - name: Run Test
           if: always()
           run: python -m robot --outputdir reports -i Smoke tests
-        - name: If Auto Test Pass Rate Not 100%, Job Will Fail
-          if: env.ROBOT_RC != '0'
-          run: |
-             echo "Auto Test Pass Rate Not 100%, Please Check Test Result"
-             exit 1
 
         - name: Publish test results
           if: always()
@@ -48,4 +46,4 @@ jobs:
         - name: Clean up repository
           if: always()
           shell: cmd
-          run: rmdir -r reports
+          run: if exist reports rmdir /Q /S reports
