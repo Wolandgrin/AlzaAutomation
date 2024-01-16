@@ -37,3 +37,7 @@ jobs:
           with:
             name: robot-test-results
             path: reports
+
+        - name: Clean up repository
+          if: always()
+          run: rm -rf reports
