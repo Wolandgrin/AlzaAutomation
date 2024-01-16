@@ -22,7 +22,8 @@ User adds "${ITEM NUMBER}" item
     Wait for condition	            ${RELOADED STATE}
 
 User hovers mouse over cart button
-    Mouse over      ${CART ICON}
+    Mouse over          ${CART ICON}
+    Wait for condition  ${RELOADED STATE}
 
 # Then
 Cart should contain "${COUNT}" item(s)

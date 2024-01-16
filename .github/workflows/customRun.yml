@@ -17,7 +17,7 @@ on:
         default: 'tests'
 
 jobs:
-    Run-Custom-Test:
+    Run-Branch-Test:
       runs-on: windows-latest
       steps:
         - name: Checkout repository
@@ -34,7 +34,7 @@ jobs:
             pip install -r requirements.txt
 
         - name: Run Test
-          run: python -m robot --outputdir reports --loglevel ${{LogLevel}} -i ${{TestTag}} ${{TestToRun}}
+          run: python -m robot --outputdir reports --loglevel ${{github.event.inputs.LogLevel}} -i ${{github.event.inputs.TestTag}} ${{github.event.inputs.TestsToRun}}
 
         - name: Publish test results
           if: always()
