@@ -36,7 +36,7 @@ jobs:
           run: |
             mkdir results
             cp log.html results/log.html
-            cp output.html results/output.xml
+            cp output.xml results/output.xml
             cp report.html results/report.html
             ls -la results
 
