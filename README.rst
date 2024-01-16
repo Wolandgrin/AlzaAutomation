@@ -12,7 +12,7 @@ SeleniumLibrary_ verifying use cases Alza web store.
 Environment
 ===========
 
-OS: MacOS 13
+OS: MacOS 14.2
 
 IDE: PyCharm 2023.3.2
 
@@ -23,6 +23,9 @@ Terminal: zsh (iTerm2)
 Verified: Mac/Win
 
 Browser: Chrome
+
+Workflow: Create branch from main - Push changes - Verify execution via GH Actions - Create
+Pull Request - Get approvals - Merge
 
 Downloading repository
 ======================
@@ -40,12 +43,8 @@ the ``tests`` directory.
 `100cart_operations.robot`_
     A test suite with a Gherkin style tests.
 
-`resource.robot`_
-    A resource file with reusable keywords and variables.
-
-    The system specific keywords created here form our own
-    domain specific language. They utilize keywords provided
-    by the imported SeleniumLibrary_.
+All locators stored in /object-repository/locators folder and
+all pages' related objects in /object-repository/page-objects folder
 
 Generated results
 =================
@@ -68,8 +67,8 @@ section above::
 
     pip install -r requirements.txt
 
-Running tests
--------------
+Running tests locally
+---------------------
 
 The `test cases`_ are located in the ``tests`` directory. They can be
 executed using the ``robot`` command::
@@ -81,6 +80,11 @@ options supported by Robot Framework::
 
     robot tests/100cart_operations.robot
     robot --loglevel DEBUG -i Smoke tests
+
+Running tests via GitHub Actions
+--------------------------------
+To verify your scenarios before creating a Pull Request please open Actions
+menu from Github repository and run Smoke tests workflow
 
 Useful commands for execution
 -----------------------------

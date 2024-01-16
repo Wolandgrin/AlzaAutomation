@@ -1,13 +1,23 @@
-name: Alza Smoke test CI
+name: Custom branch CI
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
+    inputs:
+      LogLevel:
+        description: 'Logging level for tests'
+        required: true
+        default: 'INFO'
+      TestTag:
+        description: 'Provided tag for execution'
+        required: true
+        default: 'Smoke'
+      TestsToRun:
+        description: 'Provided file name (e.g. tests/100cart_operations.robot'
+        required: true
+        default: 'tests'
 
 jobs:
-    Run-Test:
+    Run-Custom-Test:
       runs-on: windows-latest
       steps:
         - name: Checkout repository
@@ -24,7 +34,7 @@ jobs:
             pip install -r requirements.txt
 
         - name: Run Test
-          run: python -m robot --outputdir reports -i Smoke tests
+          run: python -m robot --outputdir reports --loglevel ${{LogLevel}} -i ${{TestTag}} ${{TestToRun}}
 
         - name: Publish test results
           if: always()

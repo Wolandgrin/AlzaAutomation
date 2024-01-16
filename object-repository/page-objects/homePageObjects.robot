@@ -1,21 +1,19 @@
 *** Settings ***
-Documentation     A resource file with reusable keywords and variables.
-...               The system specific keywords created here form our own
-...               domain specific language. They utilize keywords provided
-...               by the imported SeleniumLibrary.
+Documentation     File with Home page objects
 Library           SeleniumLibrary
-Resource        ../locators/homePageLocators.robot
 Resource        ../../configs/globalConfigs.robot
-
-
+Resource        ../locators/commonLocators.robot
+Resource        ../locators/homePageLocators.robot
+Resource        ../page-objects/commonPageObjects.robot
 
 *** Keywords ***
 # Given
 Browser is opened
-    Open browser            ${HOME URL}    ${BROWSER}
+    Open browser            ${HOME URL}    ${BROWSER}      options=add_argument("--disable-dev-shm-usage");add_argument('--no-sandbox');add_argument('--remote-debugging-port=9222')
     Maximize browser window
     Set Selenium speed      ${DELAY}
     Click element           ${ACCEPT COOKIES}
+    Close support chat
     Home page should be opened
 
 Home page should be opened
@@ -24,10 +22,11 @@ Home page should be opened
 # When
 User navigates to Work notebooks
     Mouse over                      ${COMPUTERS MENU}
-    Page Should Contain Element     ${WORKSTATIONS SUBMENU}    5s
+    Page should contain element     ${WORKSTATIONS SUBMENU}     5s
     Click element                   ${WORKSTATIONS SUBMENU}
-    Wait For Condition	            ${RELOADED STATE}
-    Sleep   5s
+    Wait for condition	            ${RELOADED STATE}
+    Wait until element is visible   ${BEST CATEGORY ITEMS}      5s
     Title should be                 ${WORKSTATIONS TITLE}
+    Close support chat
 
 # Then
