@@ -8,7 +8,7 @@ on:
 
 jobs:
     Run-Test:
-      runs-on: ubuntu-20.04
+      runs-on: windows-latest
       steps:
         - name: Checkout repository
           uses: actions/checkout@v1
