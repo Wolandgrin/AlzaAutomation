@@ -24,10 +24,10 @@ Home page should be opened
 # When
 User navigates to Work notebooks
     Mouse over                      ${COMPUTERS MENU}
-    Page Should Contain Element     ${WORKSTATIONS SUBMENU}    5s
+    Page Should Contain Element     ${WORKSTATIONS SUBMENU}     5s
     Click element                   ${WORKSTATIONS SUBMENU}
     Wait For Condition	            ${RELOADED STATE}
-    Wait until element is visible   ${WORKSTATIONS TITLE}    5s
+    Wait until element is visible   ${BEST CATEGORY ITEMS}      5s
     Title should be                 ${WORKSTATIONS TITLE}
 
 # Then
