@@ -2,7 +2,6 @@
 Documentation   Home page locators
 
 *** Variables ***
-${ACCEPT COOKIES}           xpath=//a[contains(text(), 'Rozumím')]
 ${HOMEPAGE TITLE}           Alza.cz – rychlý a pohodlný nákup odkudkoliv | Alza.cz
 ${WORKSTATIONS TITLE}       Pracovní notebooky | Alza.cz
 ${COMPUTERS MENU}           id=litp18890188

@@ -1,4 +1,4 @@
-name: Alza Automation CI/CD
+name: Alza Smoke test CI
 
 on:
   push:
@@ -25,11 +25,11 @@ jobs:
 
         - name: Run Test
           run: python -m robot --outputdir reports -i Smoke --loglevel DEBUG tests
-        # - name: If Auto Test Pass Rate Not 100%, Job Will Fail
-        #   if: env.ROBOT_RC != '0'
-        #   run: |
-        #     echo "Auto Test Pass Rate Not 100%, Please Check Test Result"
-        #     exit 1
+#        - name: If Auto Test Pass Rate Not 100%, Job Will Fail
+#          if: env.ROBOT_RC != '0'
+#          run: |
+#             echo "Auto Test Pass Rate Not 100%, Please Check Test Result"
+#             exit 1
 
         - name: Publish test results
           if: always()

@@ -11,14 +11,14 @@ Resource        ../../configs/globalConfigs.robot
 User filters from most expensive
     Scroll element into view    ${FILTERING BY MOST EXPENSIVE}
     Click element               ${FILTERING BY MOST EXPENSIVE}
-    Wait For Condition	        ${RELOADED STATE}
+    Wait for condition	        ${RELOADED STATE}
 
 User adds "${ITEM NUMBER}" item
-    ${present}=  Run Keyword And Return Status    Element Should Be Visible   ${BACK BUTTON}
-    Run Keyword If    ${present}    click element    ${BACK BUTTON}
+    ${present}=  Run keyword and return status    Element should be visible   ${BACK BUTTON}
+    Run keyword if    ${present}    Click element    ${BACK BUTTON}
     Scroll element into view        ${SALE ITEM1}${ITEM NUMBER}${SALE ITEM2}
     Click element                   ${SALE ITEM1}${ITEM NUMBER}${SALE ITEM2}
-    Wait For Condition	            ${RELOADED STATE}
+    Wait for condition	            ${RELOADED STATE}
 
 User hovers mouse over cart button
     Mouse over      ${CART ICON}
@@ -29,6 +29,6 @@ Cart should contain "${COUNT}" item(s)
     Element text should be          ${CART ICON}    ${COUNT}
 
 Cart should contain "${COUNT}" item(s) in list
-    ${intCount}=       Get element count    ${ITEM IN ROW}
-    ${realCount}=     Convert To String    ${intCount}
-    Should Be Equal     ${realCount}      ${COUNT}
+    ${intCount}=        Get element count   ${ITEM IN ROW}
+    ${realCount}=       Convert to string   ${intCount}
+    Should be equal     ${realCount}        ${COUNT}
