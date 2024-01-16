@@ -1,6 +1,5 @@
 *** Settings ***
-Documentation   Welcome to Gherkin based test sute for Alza webstore
-...             This sute covers scenarios of adding 2
+Documentation   Gherkin based test sute covers scenarios of adding 2
 ...             most expensive items to the cart
 Resource        ../object-repository/page-objects/homePageObjects.robot
 Resource        ../object-repository/page-objects/catalogPageObjects.robot
